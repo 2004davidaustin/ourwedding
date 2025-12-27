@@ -1,93 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La boda de Kenia y David</title>
+  <title>Kenia & David | Reserva Tu Lugar</title>
 </head>
+
 <body>
-  <h1>La boda de Kenia y David</h1>
 
-  <p>
-    Aún no hemos terminado la página, pero aquí puedes registrarte para la boda:
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSck1TxcxSh5nrD_irqT5JzRFoQWKRDHRcxrmbruNfkFg36U4Q/viewform?usp=sharing&ouid=109263298022398226812" target="_blank" rel="noopener">Regístrate Aquí</a>
-  </p>
+  <h3>K&D</h3>
 
-  <section aria-labelledby="mapa-heading">
-  <h2 id="mapa-heading">📍 Ubicación</h2>
-  <p>Haz zoom o abre el mapa en una nueva pestaña si necesitas indicaciones.</p>
-
-  <!-- New map (placed above the street view) -->
-  <div class="map-responsive">
-    <iframe
-      title="Mapa - Vista aérea"
-      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d215.3615204299411!2d-99.0240149884036!3d19.352493371969995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2smx!4v1766611244809!5m2!1ses-419!2smx"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
+  <div>
+    <img id="hero-image" src="images/sitting1.JPG" alt="Kenia y David sentados juntos sonriendo" />
   </div>
 
-  <!-- Existing street-view (kept, now below the map) -->
-  <div class="map-responsive">
-    <iframe
-      title="Street View - Ubicación de la boda"
-      src="https://www.google.com/maps/embed?pb=!4v1766610993814!6m8!1m7!1sg9K8QVWntvbk1AeiuDgCYA!2m2!1d19.35252399882362!2d-99.02387048007357!3f225.7669125565051!4f2.7770343382826326!5f0.7820865974627469"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
+  <div class="closetogether">
+    <h1>Save the Date</h1>
+    <h2>Kenia & David</h2>
+    <h3>22 Mayo 2026</h3>
   </div>
 
-  <!-- Copy address button and feedback -->
-  <p class="address-row">
-    <button id="copyAddressBtn" class="btn-copy" aria-live="polite" aria-label="Copiar dirección">📋 Copiar dirección</button>
-    <span id="copyFeedback" class="copy-feedback" aria-hidden="true"></span>
-  </p>
+  <div>
+    <p>Aún no hemos terminado la página, pero aquí puedes registrarte para la boda!</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSck1TxcxSh5nrD_irqT5JzRFoQWKRDHRcxrmbruNfkFg36U4Q/viewform?usp=sharing&ouid=109263298022398226812" target="_blank" rel="noopener" class="button">Regístrate Aquí</a>
+  </div>
 
-  <p>
-    <a href="https://www.google.com/maps/place/19.352523999,-99.024014988" target="_blank" rel="noopener">Abrir en Google Maps</a>
-  </p>
-</section>
 
-<!-- Add this script before </body> -->
-<script>
-  (function () {
-    const address = '20 de Noviembre 5, Santa María Aztahuacan, Iztapalapa, 09500 Ciudad de México, CDMX';
-    const btn = document.getElementById('copyAddressBtn');
-    const feedback = document.getElementById('copyFeedback');
+  <section>
+    <h2>Ubicación</h2>
+    <p>Haz zoom o abre el mapa en una nueva pestaña si necesitas indicaciones.</p>
 
-    function showFeedback(msg) {
-      feedback.textContent = msg;
-      feedback.setAttribute('aria-hidden', 'false');
-      setTimeout(() => {
-        feedback.textContent = '';
-        feedback.setAttribute('aria-hidden', 'true');
-      }, 2000);
-    }
+    <!-- New map -->
+    <div class="map-responsive">
+      <iframe
+        title="Mapa - Vista aérea"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d215.3615204299411!2d-99.0240149884036!3d19.352493371969995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2smx!4v1766611244809!5m2!1ses-419!2smx"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-    btn.addEventListener('click', async () => {
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(address);
-        } else {
-          // Fallback
-          const ta = document.createElement('textarea');
-          ta.value = address;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-        showFeedback('Dirección copiada ✅');
-      } catch (err) {
-        showFeedback('No se pudo copiar ⚠️');
-      }
-    });
-  })();
-</script>
+    <!-- Existing street-view -->
+    <div class="map-responsive">
+      <iframe
+        title="Street View - Ubicación de la boda"
+        src="https://www.google.com/maps/embed?pb=!4v1766610993814!6m8!1m7!1sg9K8QVWntvbk1AeiuDgCYA!2m2!1d19.35252399882362!2d-99.02387048007357!3f225.7669125565051!4f2.7770343382826326!5f0.7820865974627469"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Copy address button
+    <p class="address-row">
+      <button id="copyAddressBtn" class="button" >Copiar dirección</button>
+    </p>
+    -->
+
+    <a href="https://maps.app.goo.gl/MBZ529F1FpF8YY8m6" target="_blank" rel="noopener" class="button">Abrir en Google Maps</a>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
