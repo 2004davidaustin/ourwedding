@@ -7,32 +7,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kenia & David | Reserva Tu Lugar</title>
 </head>
-
 <body>
 
-  <h3>K&D</h3>
 
-  <div>
+
+  <header>
+    <h3>K&D</h3>
+  </header>
+
+  <!-- hero -->
+  <section id="hero">
     <img id="hero-image" src="images/sitting1.JPG" alt="Kenia y David sentados juntos sonriendo" />
-  </div>
+  </section>
 
-  <div class="closetogether">
+
+
+
+
+
+
+
+  <!-- title -->
+  <section>
     <h1>Save the Date</h1>
     <h2>Kenia & David</h2>
     <h3>22 Mayo 2026</h3>
-  </div>
-
-  <div>
-    <p>Aún no hemos terminado la página, pero aquí puedes registrarte para la boda!</p>
+    <p>Aquí puedes registrarte para la boda! A favor de confirmar antes del
+31 de marzo. ¡Gracias!</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSck1TxcxSh5nrD_irqT5JzRFoQWKRDHRcxrmbruNfkFg36U4Q/viewform?usp=sharing&ouid=109263298022398226812" target="_blank" rel="noopener" class="button">Regístrate Aquí</a>
-  </div>
+  </section>
 
 
+
+
+  
+
+
+
+  <!-- location -->
   <section>
     <h2>Ubicación</h2>
-    <p>Haz zoom o abre el mapa en una nueva pestaña si necesitas indicaciones.</p>
+    <p>El evento se llevará a cabo en el Salon Themis - Calle 20 de Noviembre y Tepeyac, Santa María Aztahuacan, 09500, ¡allí les esperamos!</p>
 
-    <!-- New map -->
+    <!-- aerial view
     <div class="map-responsive">
       <iframe
         title="Mapa - Vista aérea"
@@ -42,6 +59,7 @@
         allowfullscreen>
       </iframe>
     </div>
+    -->
 
     <!-- Existing street-view -->
     <div class="map-responsive">
@@ -68,10 +86,156 @@
 
 
 
+  <!-- Gifts -->
+  <section>
+    <h2>Regalos</h2>
+    
+    <p>
+      Tu presencia en nuestro día especial es el mejor regalo que podríamos pedir. Sin embargo, si deseas contribuir a nuestro futuro juntos, hemos creado una cuenta bancaria para regalos de boda. Debido a que no viviremos en México, no podremos llevar regalos con nosotros. Si deseas apoyarnos, cualquier contribución en efectivo o transferencia sería de gran ayuda. ¡Gracias por tu apoyo!
+    </p>
+
+    <p class="info-box">Nombre: Kenia Lagunes
+      Banco: BBVA
+      Cuenta CLABE: 012 180 01548830608 3
+      Cuenta: 154 883 0608
+      Concepto: Regalo de Boda</p>
+
+    <button id="copyInfoBtn" class="button" type="button" aria-label="Copiar información">Copiar Info</button>
+  </section>
+  
 
 
 
 
+
+
+  <!-- Timeline -->
+  <section>
+    <h2>Itinerario</h2>
+    <img id="timeline" src="images/timeline.png" alt="Linea de tiempo de la boda" />
+  </section>
+
+
+
+
+  <!-- Dress Code -->
+  <section>
+    <h2>Código de Vestimenta</h2>
+    <p>Solicitamos amablemente a nuestros invitados que NO LLEVEN corbatas, trajes, ni vestidos de estos colores. ¡Gracias!</p>
+    <span class="circle" style="background:darkblue"></span>
+    <span class="circle" style="background:green"></span>
+    <span class="circle" style="background:white"></span>
+  </section>
+  
+
+
+  <!-- Contact Info
+  <section>
+    <h2>Contacto</h2>
+    <p>Si tienes alguna pregunta, no dudes en contactarnos:</p>
+    <p>David: +1 385 310 7792</p>
+    <p>Kenia: +52 56 5690 4812</p>
+  </section>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  (function(){
+    const feedbackEl = document.getElementById('feedback');
+
+    function showFeedback(message, { duration = 2500, type = 'success' } = {}) {
+      if (!feedbackEl) return;
+      feedbackEl.textContent = message;
+      feedbackEl.classList.remove('success','error');
+      feedbackEl.classList.add(type, 'visible');
+
+      const height = Math.min(feedbackEl.offsetHeight || 48, 56);
+      document.body.style.setProperty('--feedback-height', `${height}px`);
+      document.body.classList.add('feedback-visible');
+
+      clearTimeout(feedbackEl._hideTimer);
+      feedbackEl._hideTimer = setTimeout(() => {
+        feedbackEl.classList.remove('visible');
+        document.body.classList.remove('feedback-visible');
+      }, duration);
+    }
+
+    if (feedbackEl) {
+      feedbackEl.addEventListener('transitionend', (e) => {
+        if (e.propertyName.includes('transform') && !feedbackEl.classList.contains('visible')) {
+          document.body.style.removeProperty('--feedback-height');
+        }
+      });
+    }
+
+    const copyBtn = document.getElementById('copyInfoBtn');
+    const infoEl = document.querySelector('.info-box');
+    const fallbackText = `Nombre: Kenia Lagunes\nBanco: BBVA\nCuenta CLABE: 012 180 01548830608 3\nCuenta: 154 883 0608\nConcepto: Regalo de Boda`;
+
+    function showButtonMessage(btn, message, { duration = 5000 } = {}) {
+      if (!btn) return;
+      if (!btn.dataset.origText) btn.dataset.origText = btn.textContent;
+      btn.textContent = message;
+      btn.disabled = true;
+      btn.setAttribute('aria-live', 'polite');
+      clearTimeout(btn._resetTimer);
+      btn._resetTimer = setTimeout(() => {
+        btn.textContent = btn.dataset.origText;
+        btn.disabled = false;
+      }, duration);
+    }
+
+    async function copyInfo() {
+      const text = infoEl ? infoEl.innerText.trim() : fallbackText;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        // temporarily show message inside the button to keep design consistent
+        showButtonMessage(copyBtn, 'Información copiada ✅', { duration: 2500 });
+      } catch (err) {
+        showButtonMessage(copyBtn, 'No se pudo copiar ⚠️', { duration: 2500 });
+      }
+    }
+
+    if (copyBtn) copyBtn.addEventListener('click', copyInfo);
+
+    window.showFeedback = showFeedback;
+  })();
+  </script>
+
+
+
+
+  <footer>
+    <p>© 2026 Kenia & David</p>
+  </footer>
 
 
 

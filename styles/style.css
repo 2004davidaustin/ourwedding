@@ -30,8 +30,8 @@ h1, h2, h3, p {
   margin: 0;
 }
 
-div, section {
-  margin: 1rem 0;
+section {
+  margin: 4rem 0;
 }
 
 /* Headings */
@@ -57,7 +57,31 @@ h2, h3 {
 
 
 
+/* Mobile square info box — use for small-screen highlighted text */
+.info-box {
+  background: var(--accent2);
+  color: var(--background);
+  font-family: 'Courier New', Courier, monospace; /* typewriter-style */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 400px;
+  margin: 1rem auto;
+  display: block;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: pre-line;
+}
 
+/* Make the box a true square on phones, center content vertically and horizontally */
+@media (max-width: 420px) {
+  .info-box {
+    width: calc(100% - 4rem); /* leave a bit of margin to edges */
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+}
 
 
 
@@ -85,42 +109,25 @@ h2, h3 {
 .button {
     border-radius : 0.3em;
     padding: .3em .6em .3em .6em;
-    max-height: 1.3333em;
     
-    background-color: var(--text);
+    background-color: var(--accent);
     color : var(--background);
     text-decoration: none;
+    font-family: var(--font-sanserif); /* ensure button text uses the site font */
+    font-size: inherit;
 }
 .button:hover {
     background-color: var(--background);
-    color : var(--text);
+    color : var(--accent);
 
     outline-style: solid;
-    outline-color : var(--text);
+    outline-color : var(--accent);
     outline-width: 0.15em;
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Compact on very small screens */
-@media (max-width: 420px) {
-  .btn-copy { padding: .45rem .6rem; font-size: .9rem; }
-}
 
 /* Hero image — apply to the main banner <img> to span the viewport width,
    center-crop the image, and cap the height so the focal point stays near the center */
@@ -137,4 +144,60 @@ h2, h3 {
 /* Slightly shorter cap on very small screens */
 @media (max-width: 420px) {
   #hero-image { max-height: 45vh; }
+}
+
+#hero {
+  margin: 1rem 0;
+}
+
+
+
+
+#timeline {
+  margin: 1rem auto;
+  width: 80%;
+
+  /* color for the masked shape */
+  background-color: #f9f2db;
+
+  /* Use the correct path (relative to this CSS file) */
+  -webkit-mask-image: url("../images/timeline.png");
+  mask-image: url("../images/timeline.png");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  /* Fallback: show the PNG as a background if masks aren't supported */
+  background-image: url("../images/timeline.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  /* Use alpha mask mode when supported */
+  mask-mode: alpha;
+}
+
+
+
+
+
+
+
+
+
+.circle {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 1rem 0.5rem;
+  /* subtle shadow so light circles read against the background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10);
+  /* faint border improves contrast for white circles */
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
