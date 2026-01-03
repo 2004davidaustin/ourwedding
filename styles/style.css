@@ -42,7 +42,11 @@ h1 {
   margin: 0;
 }
 
-h2, h3 {
+h2 {
+  font-weight: 500; /* semi-bold */
+}
+
+h3 {
   font-weight: 400; /* normal */
 }
 
@@ -123,7 +127,61 @@ h2, h3 {
     outline-style: solid;
     outline-color : var(--accent);
     outline-width: 0.15em;
+
+  }
+
+
+
+
+
+
+
+/* Divider: left text, thin center bar, right link */
+.divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
+.divider_left {
+  text-align: right;
+}
+.divider_sep {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--accent2);
+  justify-self: center;
+}
+.divider_right {
+  /* make the element shrink-wrap its content and center it in the grid cell
+     so borders/width changes move both edges inward rather than pinning one side */
+  display: inline-block;
+  justify-self: left;
+  text-align: center;
+}
+
+
+/* Responsive fallback: stack on narrow screens and hide separator */
+@media (max-width: 250px) {
+  .divider {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+  .divider_sep { display: none; }
+  .divider_left { text-align: center; }
+  .divider_right { justify-self: center; }
+}
+
+
+
+
+
+
+
 
 
 
@@ -156,31 +214,15 @@ h2, h3 {
 #timeline {
   margin: 1rem auto;
   width: 80%;
-
-  /* color for the masked shape */
-  background-color: #f9f2db;
-
-  /* Use the correct path (relative to this CSS file) */
-  -webkit-mask-image: url("../images/timeline.png");
-  mask-image: url("../images/timeline.png");
-
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  -webkit-mask-size: contain;
-  mask-size: contain;
-
-  -webkit-mask-position: center;
-  mask-position: center;
-
-  /* Fallback: show the PNG as a background if masks aren't supported */
-  background-image: url("../images/timeline.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  /* Use alpha mask mode when supported */
-  mask-mode: alpha;
+  color: var(--text); /* the inline SVG uses currentColor */
 }
+#timeline svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#timeline svg .timeline-fill { fill: currentColor; }
+#timeline svg .timeline-stroke { stroke: currentColor; }
 
 
 
@@ -197,7 +239,7 @@ h2, h3 {
   border-radius: 50%;
   margin: 1rem 0.5rem;
   /* subtle shadow so light circles read against the background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.10);
   /* faint border improves contrast for white circles */
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
