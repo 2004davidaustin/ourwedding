@@ -83,6 +83,7 @@ h3 {
   box-sizing: border-box;
   overflow: hidden;
   white-space: pre-line;
+  font-size: 1.5rem;
 }
 
 
@@ -94,6 +95,7 @@ h3 {
   height: 0;
   overflow: hidden;
   margin-bottom: 0.75rem;
+  border-radius: 1rem;
 }
 .map-responsive iframe {
   position: absolute;
@@ -246,7 +248,7 @@ h3 {
 /* Make the box a true square on phones, center content vertically and horizontally */
 @media (max-width: 450px) {
   .info-box {
-    width: calc(100% - 4rem); /* leave a bit of margin to edges */
+    width: calc(100% - 1rem); /* leave a bit of margin to edges */
     display: grid;
     place-items: center;
     padding: 1rem;
