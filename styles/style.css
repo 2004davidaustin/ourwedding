@@ -28,7 +28,7 @@ body {
 
 #background-flowers {
   position: absolute;
-  top: 225px;
+  top: 26vh;
   left: -260px;
   width: 400px;
   height: 400px;
@@ -214,8 +214,8 @@ h3 {
 
 @media (min-width: 450px) {
   #background-flowers {
-  top: 374px;
-  left: -220px;
+  top: 48vh;
+  left: -210px;
   transform: rotate(135deg);
   }
   
@@ -223,7 +223,7 @@ h3 {
 
 @media (min-width: 1044px) {
   #background-flowers {
-  top: 236px;
+  top: 20vh;
   left: -36vw;
   width: 700px;
   height: 700px;
@@ -232,9 +232,9 @@ h3 {
   
 }
 
-@media (min-width: 1926px) {
+@media (min-width: 1900px) {
   #background-flowers {
-    top: 270px;
+    top: 21vw;
     left: -45vw;
     width: 1000px;
     height: 1000px;
