@@ -88,3 +88,35 @@ fetch('partials/timeline.html')
 
         window.showFeedback = showFeedback;
       })();
+
+
+
+
+
+
+
+          // COUNT DOWN
+
+     function tick() {
+    const target = new Date('2026-05-22T00:00:00');
+    const now = new Date();
+    const diff = target - now;
+    const grid = document.getElementById('cd-grid');
+    if (diff <= 0) {
+      grid.innerHTML = '<div class="cd-done">Today is the day!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const units = [{v:d,l:'days'},{v:h,l:'hours'},{v:m,l:'min'},{v:s,l:'sec'}];
+    grid.innerHTML = units.map(u => `
+      <div class="cd-box">
+        <div class="cd-num">${String(u.v).padStart(2,'0')}</div>
+        <div class="cd-unit">${u.l}</div>
+      </div>
+    `).join('');
+  }
+  tick();
+  setInterval(tick, 1000);

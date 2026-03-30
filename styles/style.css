@@ -4,11 +4,16 @@
 :root {
   --background: #f9f2db;
   --text: #362923;
-  --accent: #774944;
-  --accent2: #887155;
+  --accent: #733129;
+  --accent2: #895f2b;
 
   --font-cursive: "Bonheur Royale", system-ui, Arial, sans-serif;
   --font-sanserif: "Outfit", system-ui, Arial, sans-serif;
+
+  /* size palette: small/medium/large */
+  --text-size-small: 0.75rem; /* 12px */
+  --text-size-medium: 1.75rem; /* body base */
+  --text-size-large: 3rem; /* heading / key stats */
 }
 
 /* Base layout */
@@ -16,7 +21,7 @@ body {
   font-family: var(--font-sanserif);
   color: var(--text);
   background-color: var(--background); /* page background using variable */
-  font-size: 1.75rem;
+  font-size: var(--text-size-medium);
   max-width: 900px;
   margin: 1rem auto;
   padding: 0 1rem;
@@ -25,6 +30,32 @@ body {
   position: relative;
   z-index: 1;
 }
+
+h1 {
+  font-family: var(--font-cursive);
+  font-weight: 400; /* normal */
+  font-size: var(--text-size-large);
+  line-height: 0.9;
+  margin: 0;
+}
+
+.info-box {
+  background: var(--accent2);
+  color: var(--background);
+  font-family: "Courier New", Courier, monospace; /* typewriter-style */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 400px;
+  margin: 1rem auto;
+  display: block;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: pre-line;
+  font-size: var(--text-size-medium);
+}
+
+
 
 #background-flowers {
   position: absolute;
@@ -75,7 +106,10 @@ h3 {
   font-weight: 500; /* normal */
 }
 
-/* Mobile square info box — use for small-screen highlighted text */
+
+
+
+/* square info box — use for small-screen highlighted text */
 .info-box {
   background: var(--accent2);
   color: var(--background);
@@ -91,6 +125,7 @@ h3 {
   white-space: pre-line;
   font-size: 1.5rem;
 }
+
 
 
 
@@ -130,6 +165,11 @@ h3 {
   outline-width: 0.15em;
 }
 
+
+
+
+
+
 /* Divider: left text, thin center bar, right link */
 .divider {
   display: grid;
@@ -164,6 +204,8 @@ h3 {
 
 
 
+
+
 /* Hero image — apply to the main banner <img> to span the viewport width,
    center-crop the image, and cap the height so the focal point stays near the center */
 #hero-image {
@@ -175,9 +217,6 @@ h3 {
   object-fit: cover; /* crop to fill while preserving aspect ratio */
   object-position: center; /* crop centered (not head/foot) */
 }
-
-
-
 
 #hero {
   margin: 1rem 0;
@@ -218,6 +257,72 @@ h3 {
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+
+
+
+
+
+
+
+
+
+/* Countdown timer */
+.cd-wrap {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.cd-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cd-box {
+  background: var(--accent2);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  min-width: 72px;
+}
+
+.cd-label {
+  font-size: var(--text-size-medium);
+  color: var(--accent2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.cd-num {
+  font-size: var(--text-size-large);
+  font-weight: 600;
+  color: var(--background);
+  line-height: 1;
+}
+
+.cd-unit {
+  font-size: var(--text-size-small);
+  color: var(--background);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.cd-done {
+  font-size: var(--text-size-medium);
+  font-weight: 600;
+  color: var(--text);
+}
+
+
+
+
+
+
+
+
+
 @media (min-width: 450px) {
   #background-flowers {
   top: 48vh;
@@ -247,6 +352,14 @@ h3 {
     transform: rotate(135deg);
   }
 }
+
+
+
+
+
+
+
+
 
 
 /* from here these are all messed up and set up for desktop first instead of mobile, i apologize */ 
@@ -284,6 +397,16 @@ h3 {
     max-height: 45vh;
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 /* svg fix */
 
